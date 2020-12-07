@@ -1,0 +1,36 @@
+//-probar pug
+//-ul
+    each product in products
+        li
+            strong= product.name
+            p= product.price
+            p Comprar
+
+
+extends layout.pug
+
+block hero
+    section.hero.is-warning.is-bold
+        .hero-body
+            .container
+                h1.title GRANDMA'S DESSERTS
+                h2.subtitle The Finest Pastry
+
+//- footer queda debajo
+block content
+    .container(style="flex: 1; padding: 50px 0;")    
+        .columns.is-multiline
+            //-each product in productMocks
+            each product in products
+                .column.is-one-quarter
+                    .card
+                        .card-image
+                            figure.image(style="height: 320px")
+                                img(src=product.image style="height: 100%; object-fit: contain; object-position:50% 30%")
+                        .card-content
+                            h1.title= product.name
+                            .button.is-fullwidth.is-primary
+                                span.icon
+                                    i.fas.fa-shopping-cart
+                                span Add 
+                                    strong= `${product.price} USD`
